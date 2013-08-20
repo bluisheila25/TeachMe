@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--{return false}).show-->
+
+<html>
+
+	<head>
+	
+		<link rel="stylesheet" href="css/gumby.css">
+		<script src="js/libs/modernizr-2.6.2.min.js"></script>
+		
+		<meta name="viewport" content="height=device-height, width=device-width, initial-scale=0.45, maximum-scale=0.45, target-densitydpi=device-dpi, user-scalable=no">
+		
+		<style>
+		
+			.btn.drawer { margin-bottom:10px; }
+			.drawer { text-align: center; }
+			h1.lead { border-bottom: 1px dotted #ccc; margin-bottom: 30px; }
+			h4.lead { margin-bottom:10px; }
+			#icon_map ul li { font-size: 16px; }
+			.smallify { font-size: 13px; }
+			.modal h2, .modal .btn { margin: 5% 0 20px; }	
+			
+		</style>
+	
+	
+	<head>
+	
+	<body style="background-image:url(img/blur.png); background-color:#c7cfef;">
+		
+		<br/><div class="row" align="center">
+		
+			<li class="success alert" style="width:100%" align="center"><h3>Learn Basic HTML5</h3></li>
+
+		</div><br/><br/><br/><br/><br/><br/>
+		
+		<div class="row" align="center" style="width:100%; height:100%;">
+		
+			<div class="pretty medium primary btn" style="width:100%; font-size:48px;"><a href="Teach Me.html">Teach me!</a></div><br/><br/>
+		
+			<div class="pretty medium primary btn" style="width:100%; font-size:48px;"><a href="#">How do I use this app?</a></div><br/><br/>
+
+			<div class="pretty medium primary btn" style="width:100%; font-size:48px;"><a href="About.html">About</a></div><br/><br/>
+			
+		</div>
+		
+		<li class="success alert" style="width:100%; position:fixed; bottom:0; left:0;" align="center">Learn Basic HTML5 | mobGeeks | All Rights Reserved 2013</li>
+		
+		<script>
+		
+			var oldieCheck = Boolean(document.getElementsByTagName('html')[0].className.match(/\soldie\s/g));
+			
+			if(!oldieCheck) {
+			document.write('<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"><\/script>');
+			} 
+			
+			else {
+			document.write('<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"><\/script>');
+			}
+			
+		</script>
+		
+		<script>
+		
+			if(!window.jQuery) {
+			
+				if(!oldieCheck) {				
+					document.write('<script src="js/libs/jquery-2.0.2.min.js"><\/script>');
+				}
+				
+				else {
+				document.write('<script src="js/libs/jquery-1.10.1.min.js"><\/script>');
+				}
+				
+			}
+		</script>
+
+		<!--
+		Include gumby.js followed by UI modules.
+		Or concatenate and minify into a single file
+		<script src="js/libs/gumby.js"></script>
+		<script src="js/libs/ui/gumby.retina.js"></script>
+		<script src="js/libs/ui/gumby.fixed.js"></script>
+		<script src="js/libs/ui/gumby.skiplink.js"></script>
+		<script src="js/libs/ui/gumby.toggleswitch.js"></script>
+		<script src="js/libs/ui/gumby.checkbox.js"></script>
+		<script src="js/libs/ui/gumby.radiobtn.js"></script>
+		<script src="js/libs/ui/gumby.tabs.js"></script>
+		<script src="js/libs/ui/gumby.navbar.js"></script>
+		<script src="js/libs/ui/gumby.fittext.js"></script>
+		<script src="js/libs/ui/jquery.validation.js"></script>
+		<script src="js/libs/gumby.init.js"></script>-->
+
+		<script src="js/libs/gumby.min.js"></script>
+		<script src="js/plugins.js"></script>
+		<script src="js/main.js"></script>
+
+		<!-- Change UA-XXXXX-X to be your site's ID -->
+		<!--<script>
+		window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];
+		Modernizr.load({
+		load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+		});
+		</script>-->
+
+		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+		chromium.org/developers/how-tos/chrome-frame-getting-started -->
+		<!--[if lt IE 7 ]>
+		<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+		<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+		<![endif]-->
+		
+	</body>
+
+</html>

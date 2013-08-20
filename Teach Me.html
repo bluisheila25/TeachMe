@@ -1,0 +1,318 @@
+<html>
+
+	<head>
+	
+	<meta name="viewport" content="height=device-height, width=device-width, initial-scale=0.45, maximum-scale=0.45, target-densitydpi=device-dpi, user-scalable=no">
+
+	<link rel="stylesheet" href="css/gumby.css">
+
+	<script src="js/libs/modernizr-2.6.2.min.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="engine1/style.css" />
+	<script type="text/javascript" src="engine1/jquery.js"></script>	
+	
+	</head>
+	
+	<body style="background-image:url(img/blur.png); background-color:#c7cfef;">
+		
+		<div class="navbar" id="nav1">
+			<div class="row">
+				<a class="toggle" gumby-trigger="#nav1 > .row > ul" href="#"><i class="icon-menu"></i></a>
+				<h1 class="four columns logo">
+					<a href="#">
+						<img src="img/header.png" gumby-retina />
+					</a>
+				</h1>
+				<ul class="eight columns">
+					<li><a href="Index.html" style="font-size:48px;">Home</a></li></br></br>
+					<li><a href="Teach Me.html" style="font-size:48px;">Teach Me</a></li></br></br>
+					<li><a href="About.html" style="font-size:48px;">About</a></li></br></br>
+				</ul>
+			</div>
+		</div><br/>
+		
+		<div class="row" align="center">
+		
+		<script type="text/javascript">
+		
+		function click1(){
+		
+			if (document.getElementById('drawer1').className=="drawer"){
+		
+				document.getElementById('drawer2').className = "drawer";
+				document.getElementById('drawer3').className = "drawer";
+				document.getElementById('drawer4').className = "drawer";
+				document.getElementById('drawer5').className = "drawer";
+		
+			}
+
+			else if (document.getElementById('drawer2').className=="drawer"){
+		
+				document.getElementById('drawer1').className = "drawer";
+				document.getElementById('drawer3').className = "drawer";
+				document.getElementById('drawer4').className = "drawer";
+				document.getElementById('drawer5').className = "drawer";
+		
+			}
+
+			else if (document.getElementById('drawer3').className=="drawer"){
+		
+				document.getElementById('drawer1').className = "drawer";
+				document.getElementById('drawer2').className = "drawer";
+				document.getElementById('drawer4').className = "drawer";
+				document.getElementById('drawer5').className = "drawer";
+		
+			}
+
+			else if (document.getElementById('drawer4').className=="drawer"){
+		
+				document.getElementById('drawer1').className = "drawer";
+				document.getElementById('drawer2').className = "drawer";
+				document.getElementById('drawer3').className = "drawer";
+				document.getElementById('drawer5').className = "drawer";
+		
+			}
+
+			else if (document.getElementById('drawer5').className=="drawer"){
+		
+				document.getElementById('drawer1').className = "drawer";
+				document.getElementById('drawer2').className = "drawer";
+				document.getElementById('drawer3').className = "drawer";
+				document.getElementById('drawer4').className = "drawer";
+		
+			}			
+		
+		}
+		
+		</script>
+		
+			<p class="pretty medium secondary btn" style="font-size:48px; width:50%" align="center"><a href="#" class="toggle" gumby-trigger="#drawer1" onClick="click1()">Web Storage</a></p>
+			<div class="row" align="center">
+				<div class="twelve columns">
+					<div class="drawer" id="drawer1">
+						<p align="center">
+							<p class="secondary alert" style="font-size:48px; width:97%">
+								localStorage - Persistent Storage<br/>
+								sessionStorage - Per tab storage
+							</p>
+							<p class="secondary alert" style="font-size:36px; width:97%">
+								
+								saveButton.addEventListener('click', function () {
+								window.<b>localStorage</b>.<b>setItem</b>('value', area.value);
+								window.<b>localStorage</b>.<b>setItem</b>('timestamp', (new Date()).getTime());
+								}, false);
+								textarea.value = window.<b>localStorage</b>.<b>getItem</b>('value');
+								
+							</p>
+							<p id="localstorage-message" class="success alert" style="font-size:38px; width:97%" align="center">Save text value on the client side (crash-safe)</p>
+							<textarea class="input textarea" placeholder="Textarea" rows="3" id="ta" style="width:97%; font-size:38px;"></textarea><br/><br/>
+							<p class="pretty medium secondary btn" style="font-size:38px; width:50%; height:66px; line-height:64px;" align="center" id="save-ta">Save</p><br/>
+							<p id="ta-log"></p>
+							<script defer>
+								(function(){
+									try {
+									(window.localStorage.getItem) // will throw in Firefox under some settings
+									} 
+									catch(e){
+									return; // quit because dom.storage.enabled is false
+									}
+									var area = document.querySelector('#ta');
+									// place content from previous edit
+									if (!area.value) {
+									area.value = window.localStorage.getItem('value');											}
+									updateLog(false);
+ 
+									// your content will be saved locally
+									document.querySelector('#save-ta').addEventListener('click', function () {
+									window.localStorage.setItem('value', area.value);
+									window.localStorage.setItem('timestamp', (new Date()).getTime());
+									updateLog(true);
+									}, false);
+
+									function updateLog(new_save) {
+										
+										var log = document.querySelector("#ta-log");
+										var delta = 0;
+											
+										if (window.localStorage.getItem('value')) {
+											delta = ((new Date()).getTime() - (new Date()).setTime(window.localStorage.getItem('timestamp'))) / 1000;
+											if (new_save) {
+												log.textContent = 'Saved. Content will be available after browser refresh/reopen.';
+												setTimeout(function() {
+													log.textContent = '';
+												}, 3000);
+											}
+											else {
+												log.textContent = '    Last Saved: ' + delta + 's ago';
+											}
+										}
+									}
+								})();  
+							</script>
+						</p>
+					</div>
+				</div>
+			</div><br/>
+			
+			<p class="pretty medium secondary btn" style="font-size:48px; width:50%" align="center"><a href="#" class="toggle" gumby-trigger="#drawer2" onClick="click1()">Auto-Complete</a></p>
+			<div class="row">
+				<div class="twelve columns">
+					<div class="drawer" id="drawer2">
+						<p>
+							<p class="secondary alert" style="font-size:36px; width:97%" align="center">
+							&lt;input <b>list</b>="cars"/&gt;<br/>
+							&lt;<b>datalist</b> id="cars"&gt;<br/>
+							&lt;option value="BMW"/&gt;<br/>
+							&lt;option value="Ford"/&gt;<br/>
+							&lt;option value="Volvo"/&gt;<br/>
+							&lt;/<b>datalist</b>&gt;
+							</p><br/>
+							
+							<input align="center" class="text input" type="text" placeholder="You should see an autocomplete menu as you type" id="cars-input" list="cars" style="width:97%; font-size:38px;"></input><br/><br/>
+							
+							<p class="secondary alert" style="font-size:36px; width:97%; text-align:center;" align="center">
+							These items will show up when you type the first letter.<br/><br/>
+							BMW<br/>
+							Ford<br/>
+							Volvo<br/><br/>
+							This function is called "Auto-Complete"
+							</p>
+							
+							<datalist id="cars">
+								<option value="BMW" />
+								<option value="Ford" />
+								<option value="Volvo" />
+							</datalist>
+						</p>
+					</div>
+				</div>
+			</div><br/>
+			
+			<p class="pretty medium secondary btn" style="font-size:48px; width:50%"><a href="#" class="toggle" gumby-trigger="#drawer3" onClick="click1()">Meter Tags</a></p>
+			<div class="row">
+				<div class="twelve columns">
+					<div class="drawer" id="drawer3">
+						<p>
+							<p class="secondary alert" style="font-size:36px; width:97%; text-align:center;" align="center">
+								&lt;<b>meter</b> <b>min</b>="0" <b>max</b>="100" <b>low</b>="40" <b>high</b>="90" <b>optimum</b>="100" value="91"&gt;A+&lt;/<b>meter</b>&gt;<br/><br/>
+								Your score is:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<meter value="91" min="0" max="100" low="40" high="90" optimum="100">A+</meter><br/><br/>
+							</p>
+							<p class="secondary alert" style="font-size:36px; width:97%; text-align:center; vertical-align:middle" align="center">
+								&lt;<b>progress</b>&gt;working...&lt;/<b>progress</b>&gt;<br/><br/>
+								Download is: <progress>working...</progress><br/><br/>
+							</p>
+							<p class="secondary alert" style="font-size:36px; width:97%; text-align:center; vertical-align:middle" align="center">
+								&lt;<b>progress</b> value="75" <b>max</b>="100"&gt;3/4 complete&lt;/<b>progress</b>&gt;<br/><br/>
+								Goal is: <progress value="75" max="100">3/4 complete</progress><br/><br/>
+							</pre>						
+						</p>
+					</div>
+				</div>
+			</div><br/>
+			
+			<p class="pretty medium secondary btn" style="font-size:48px; width:50%"><a href="#" class="toggle" gumby-trigger="#drawer4" onClick="click1()">Forms Types</a></p>
+			<div class="row">
+				<div class="twelve columns">
+					<div class="drawer" id="drawer4">
+						<p>
+							<p class="secondary alert" style="font-size:36px; width:97%; text-align:center; vertical-align:middle" align="center">
+								&lt;input type="text" <b>required</b> /&gt;<br/><br/><input align="center" class="text input" type="text" style="width:97%; font-size:38px;"></input><br/><br/>
+							</p>
+							<p class="secondary alert" style="font-size:36px; width:97%; text-align:center; vertical-align:middle" align="center">
+								&lt;input type="<b>email</b>" value="some@email.com" /&gt;<br/><br/><input class="email input" type="email" placeholder="Email input" style="width:97%; font-size:38px;"/><br/><br/>
+							</p>
+							<p class="secondary alert" style="font-size:36px; width:97%; text-align:center; vertical-align:middle" align="center">
+								&lt;input type="<b>date</b>" <b>min</b>="2010-08-14" <b>max</b>="2011-08-14" value="2010-08-14"/&gt;<br/><br/><input type="date" min="2010-08-14" max="2011-08-14" value="2010-08-14" style="width:97%; font-size:38px;"/><br/><br/>
+							</p>
+							<p class="secondary alert" style="font-size:36px; width:97%; text-align:center; vertical-align:middle" align="center">
+								&lt;input type="<b>range</b>" <b>min</b>="0" <b>max</b>="50" value="10" /&gt;<br/><br/><input type="range" min="0" max="50" value="10" /><br/><br/>
+							</p>
+							<p class="secondary alert" style="font-size:36px; width:97%; text-align:center; vertical-align:middle" align="center">
+								&lt;input type="<b>search</b>" <b>results</b>="10" <b>placeholder</b>="Search..." /&gt;</br></br><input class="search input" type="search" placeholder="Search input" style="width:97%; font-size:38px;"/></br></br>
+							</p>
+							<p class="secondary alert" style="font-size:36px; width:97%; text-align:center; vertical-align:middle" align="center">
+								&lt;input type="<b>tel</b>"  <b>placeholder</b>="(555) 555-5555"
+								<b>pattern</b>="^\(?\d{3}\)?[-\s]\d{3}[-\s]\d{4}.*?$" /&gt;</br></br><input type="tel" placeholder="(555) 555-5555" pattern="^\(?\d{3}\)?[-\s]\d{3}[-\s]\d{4}.*?$" style="width:97%; font-size:38px;"/></br></br>
+							</p>
+							<p class="secondary alert" style="font-size:36px; width:97%; text-align:center; vertical-align:middle" align="center">
+								&lt;input type="<b>color</b>" <b>placeholder</b>="e.g. #bbbbbb" /&gt;</br></br><input type="color" placeholder="e.g. #bbbbbb" style="width:97%; font-size:38px;"/></br></br>
+							</p>
+							<p class="secondary alert" style="font-size:36px; width:97%; text-align:center; vertical-align:middle" align="center">
+								<br/>&lt;input type="<b>number</b>" <b>step</b>="1" <b>min</b>="-5" <b>max</b>="10" value="0" /&gt;<br/><br/><input type="number" step="1" min="-5" max="10" value="0" style="width:97%; font-size:38px;"/><br/>
+							</p>
+						</p>
+					</div>
+				</div>
+			</div><br/>
+			
+		</div>
+		
+        <li class="success alert" style="width:100%; position:fixed; bottom:0; left:0;" align="center">Learn Basic HTML5 | mobGeeks | All Rights Reserved 2013</li>
+			
+		<script>
+		
+			var oldieCheck = Boolean(document.getElementsByTagName('html')[0].className.match(/\soldie\s/g));
+			
+			if(!oldieCheck) {
+			document.write('<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"><\/script>');
+			} 
+			
+			else {
+			document.write('<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"><\/script>');
+			}
+			
+		</script>
+		
+		<script>
+		
+			if(!window.jQuery) {
+			
+				if(!oldieCheck) {				
+					document.write('<script src="js/libs/jquery-2.0.2.min.js"><\/script>');
+				}
+				
+				else {
+				document.write('<script src="js/libs/jquery-1.10.1.min.js"><\/script>');
+				}
+				
+			}
+		</script>
+
+		<!--
+		Include gumby.js followed by UI modules.
+		Or concatenate and minify into a single file
+		<script src="js/libs/gumby.js"></script>
+		<script src="js/libs/ui/gumby.retina.js"></script>
+		<script src="js/libs/ui/gumby.fixed.js"></script>
+		<script src="js/libs/ui/gumby.skiplink.js"></script>
+		<script src="js/libs/ui/gumby.toggleswitch.js"></script>
+		<script src="js/libs/ui/gumby.checkbox.js"></script>
+		<script src="js/libs/ui/gumby.radiobtn.js"></script>
+		<script src="js/libs/ui/gumby.tabs.js"></script>
+		<script src="js/libs/ui/gumby.navbar.js"></script>
+		<script src="js/libs/ui/gumby.fittext.js"></script>
+		<script src="js/libs/ui/jquery.validation.js"></script>
+		<script src="js/libs/gumby.init.js"></script>-->
+
+		<script src="js/libs/gumby.min.js"></script>
+		<script src="js/plugins.js"></script>
+		<script src="js/main.js"></script>
+
+		<!-- Change UA-XXXXX-X to be your site's ID -->
+		<!--<script>
+		window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];
+		Modernizr.load({
+		load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+		});
+		</script>-->
+
+		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+		chromium.org/developers/how-tos/chrome-frame-getting-started -->
+		<!--[if lt IE 7 ]>
+		<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+		<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+		<![endif]-->
+		
+	</body>
+		
+</html>
